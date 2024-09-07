@@ -1,0 +1,31 @@
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <!-- Your form fields here -->
+    <input type="text" name="username" placeholder="Username">
+    <input type="password" name="password" placeholder="Password">
+    <button type="submit">Login</button>
+            <div class="text-center fs-6">
+            <a href="#">Forget password?</a> or <a href="{% url 'register' %}">Sign up</a>
+        </div>
+</form>
+
+{#<div class="wrapper">#}
+{#        #}
+{#        <div class="text-center mt-4 name">#}
+{#            BlueStock#}
+{#        </div>#}
+{#        <form class="p-3 mt-3">#}
+{#            <div class="form-field d-flex align-items-center">#}
+{#                <span class="far fa-user"></span>#}
+{#                <input type="text" name="userName" id="userName" placeholder="Username">#}
+{#            </div>#}
+{#            <div class="form-field d-flex align-items-center">#}
+{#                <span class="fas fa-key"></span>#}
+{#                <input type="password" name="password" id="pwd" placeholder="Password">#}
+{#            </div>#}
+{#            <button class="btn mt-3">Login</button>#}
+{#        </form>#}
+
+{#    </div>#}
+{#    #}
+{#</form>#}

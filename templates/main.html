@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+{% include 'sidebar.html' %}
+<!-- In your base template or wherever you want to put the logout link -->
+<a href="{% url 'custom_logout' %}">Logout</a>
+<!-- In your template (e.g., base.html) -->
+{#<a href="{% url 'logout' %}">Logout</a>#}
+
+
+{% block content %}
+        
+    
+
+{% endblock %}
+<hr>
+<h5> footer</h5>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</html>
+
+from rest_framework.authtoken.models import Token
+from django.contrib.auth.models import User
+
+user = User.objects.get(username='admin')
+token, created = Token.objects.get_or_create(user=user)
+print(token.key)  # This will print the token value
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+{
+  "token": "614f349be0ad3b20ed7ce62cc63268eceb7b78c5"
+}
+
+import requests
+
+url = 'http://localhost:8000/api/ipos/'
+headers = {
+    'Authorization': '614f349be0ad3b20ed7ce62cc63268eceb7b78c5'
+}
+
+response = requests.get(url, headers=headers)
+print(response.json())  # You should get the API data as a response
+
+
